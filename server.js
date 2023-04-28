@@ -9,7 +9,7 @@ const mongoose = require('mongoose'); // Import mongoose library
 
 mongoose.set('strictQuery', false);
 
-app.use(cors()); // Enable CORS for all routes
+app.use(cors()); 
 
 app.use(express.json());
 const userRoute = require("./routes/userRoute");
@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-const port = process.env.PORT || 5000;
+const port = 8000;
 
 app.get("/", (req, res) => res.send("Hello World!"));
 app.listen(port, () => console.log(`Node Express Server Started at ${port}!`));

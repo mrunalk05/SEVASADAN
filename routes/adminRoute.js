@@ -5,6 +5,7 @@ const Doctor = require("../models/doctorModel");
 const Patient = require('../models/PatientModel');
 const authMiddleware = require("../middlewares/authMiddleware");
 const mongoose = require('mongoose');
+const bedmodel = require("../models/PatientModel");
 
 router.get("/get-all-doctors", authMiddleware, async (req, res) => {
   try {
@@ -107,7 +108,32 @@ router.post('/register-patient', authMiddleware, async (req, res) => {
   }
 });
  
+router.post('/add-bed', async(req, res)=>{
+  try{
+    const rest= req.body;
+console.log(rest);
+    const bedd= new bedmodel({
+      roomno: req.body.roomno,
+      bedno: req.body.bedno,
+      patient: req.body.patient
+    });
 
+    const result= await bedd.save();
+    res.status(201).json({
+      message: 'Bed Added successfully',
+      success: true,
+      data: result,
+    });
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({
+      message: 'Error while adding bed',
+      success: false,
+      error,
+    });
+  }
+})
 
 /* pateints */
 router.get("/patients", authMiddleware, async (req, res) => {

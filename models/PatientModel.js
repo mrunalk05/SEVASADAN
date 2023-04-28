@@ -26,3 +26,23 @@ const patientSchema = new mongoose.Schema({
 const Patient = mongoose.model("Patient", patientSchema);
 
 module.exports = Patient;
+
+
+const bedSchema= new mongoose.Schema({
+  roomno:{
+    type: String,
+    required: true
+  },
+  bedno:{
+    type:String,
+    reuired:true
+  },
+  patient:{
+    type:String,
+    reuired:true
+  }
+});
+
+const bedmodel = mongoose.model("bedmodel", bedSchema);
+
+module.exports= bedmodel;

@@ -72,7 +72,11 @@ function Layout({ children }) {
       path: "/register-patient",
       icon: "ri-user-add-line",
     },
-
+    {
+      name: "Add Bed",
+      path: "/add-bed",
+      icon: "ri-questionnaire-line",
+    },
     {
       name: "Billing",
       path: "/billing",
