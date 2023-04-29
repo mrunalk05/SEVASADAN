@@ -95,7 +95,7 @@ function Layout({ children }) {
 
     {
       name: "Inventory",
-      path: "/inventory",
+      path: "/inven",
       icon: "ri-archive-line",
     },
     {

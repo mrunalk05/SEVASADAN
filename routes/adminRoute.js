@@ -6,6 +6,7 @@ const Patient = require('../models/PatientModel');
 const authMiddleware = require("../middlewares/authMiddleware");
 const mongoose = require('mongoose');
 const bedmodel = require("../models/PatientModel");
+const medd = require("../models/PatientModel");
 
 router.get("/get-all-doctors", authMiddleware, async (req, res) => {
   try {
@@ -133,6 +134,32 @@ console.log(rest);
       error,
     });
   }
+});
+
+router.post('/inven', authMiddleware ,async(req, res)=>{
+  try{
+    const medico= new medd({
+      medname: req.body.medname,
+      medcompany: req.body.medcompany,
+      quantity: req.body.quantity,
+      disease: req.body.disease
+    });
+
+    const result= await medico.save();
+    res.status(201).json({
+      message: 'Inven Added successfully',
+      success: true,
+      data: result,
+    });
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({
+      message: 'Error while adding bed',
+      success: false,
+      error,
+  });
+}
 })
 
 /* pateints */

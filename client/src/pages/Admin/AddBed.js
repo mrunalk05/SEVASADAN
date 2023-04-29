@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Patient.css";
 import axios from "axios";
+import Layout from "antd/lib/layout/layout";
 
 function AddBed() {
     const navigate = useNavigate();
@@ -63,6 +64,8 @@ function AddBed() {
 
     return (
         <>
+        <Layout>
+        <div className="container">
             <form onSubmit={handleSubmit}>
                 {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
                 <label>
@@ -75,12 +78,14 @@ function AddBed() {
                     <input type="text" name="bedno" value={bed.bedno} onChange={onValueChange} />
                 </label>
                 <label>
-                    Bed Number:
+                   Patient:
                     <input type="text" name="patient" value={bed.patient} onChange={onValueChange} />
                 </label>
 
                 <button type="submit">Submit</button>
             </form>
+            </div>
+            </Layout>
         </>
     )
 }

@@ -20,6 +20,7 @@ import Patientlist from "./pages/Admin/Patientlist";
 import View from "./pages/Admin/View";
 import AddBed from "./pages/Admin/AddBed";
 import Update from "./pages/Admin/Update";
+import Inven from "./pages/Admin/Inven";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -165,6 +166,16 @@ function App() {
             </ProtectedRoute>
           }
         />
+
+<Route
+          path="/inven"
+          element={
+            <ProtectedRoute>
+              <Inven />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );
