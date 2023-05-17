@@ -13,7 +13,7 @@ function View() {
   const fetchPatientData = useCallback(async (id) => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/admin/patients/${id}`,
+        `http://localhost:5000/api/admin/view/patient/${id}`,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -62,6 +62,10 @@ function View() {
         <div className="patient-info">
           <label>Address:</label>
           <p>{patient.address}</p>
+        </div>
+        <div className="patient-info">
+          <label>gender:</label>
+          <p>{patient.gender}</p>
         </div>
         <div className="back-btn">
           <Link to="/search-patient">Back to Patients</Link>

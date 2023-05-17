@@ -3,15 +3,32 @@ import { useNavigate, useParams } from "react-router-dom";
 
 function Update() {
   const { id } = useParams(); // retrieve id from URL params
-  const [formData, setFormData] = useState({}); // store form data
+  const [formData, setFormData] = useState({
+    name: "",
+    age: "",
+    phone: "",
+    address: "",
+  }); // store form data
   const history = useNavigate(); // use history object to navigate
 
   // fetch patient data by id from backend API
   useEffect(() => {
     const fetchPatientData = async () => {
-      const response = await fetch(`http://localhost:5000/api/admin/patients/${id}`);
-      const data = await response.json();
-      setFormData(data);
+      try {
+        const response = await fetch(
+          `http://localhost:5000/api/admin/patients/${id}`,
+          { method: "PUT" }
+        );
+        if (response.ok) {
+          const data = await response.json();
+          setFormData(data);
+        } else {
+          throw new Error("Failed to fetch patient data");
+        }
+      } catch (error) {
+        console.error(error.message);
+        // Handle error condition, e.g., display an error message to the user
+      }
     };
     fetchPatientData();
   }, [id]);
@@ -25,12 +42,24 @@ function Update() {
   // handle form submission
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await fetch(`http://localhost:5000/api/admin/patients/${id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(formData),
-    });
-    history("/search-patient"); // navigate to patients page
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/admin/patients/${id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        }
+      );
+      if (response.ok) {
+        history("/search-patient"); // navigate to patients page
+      } else {
+        throw new Error("Failed to update patient");
+      }
+    } catch (error) {
+      console.error(error.message);
+      // Handle error condition, e.g., display an error message to the user
+    }
   };
 
   return (
@@ -95,7 +124,6 @@ function Update() {
                 onChange={handleInputChange}
               />
             </div>
-
             <button type="submit" className="btn btn-primary">
               Update Patient
             </button>

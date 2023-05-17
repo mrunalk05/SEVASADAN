@@ -5,6 +5,8 @@ import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+import antd from 'antd';
+// Use antd.version instead of version
 
 function Userslist() {
   const [users, setUsers] = useState([]);
