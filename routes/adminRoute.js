@@ -192,8 +192,20 @@ router.put("/patients/:id", async (req, res) => {
   const {
     name,
     age,
+    gender,
+    occupation,
     phone,
     address,
+    complaints,
+    history,
+    allergies,
+    general_examination,
+    level_of_consciousness,
+    vitals,
+    systematicexam,
+    local_examination,
+    treatmentPlan,
+    assessedBy
   } = req.body;
 
   try {
@@ -207,10 +219,20 @@ router.put("/patients/:id", async (req, res) => {
     // Update the patient's information
     patient.name = name || patient.name;
     patient.age = age || patient.age;
-    
+    patient.gender = gender || patient.gender;
+    patient.occupation = occupation || patient.occupation;
     patient.phone = phone || patient.phone;
     patient.address = address || patient.address;
-     
+    patient.complaints = complaints || patient.complaints;
+    patient.history = history || patient.history;
+    patient.allergies = allergies || patient.allergies;
+    patient.general_examination = general_examination || patient.general_examination;
+    patient.level_of_consciousness = level_of_consciousness || patient.level_of_consciousness;
+    patient.vitals = vitals || patient.vitals;
+    patient.systematicexam = systematicexam || patient.systematicexam;
+    patient.local_examination = local_examination || patient.local_examination;
+    patient.treatmentPlan = treatmentPlan || patient.treatmentPlan;
+    patient.assessedBy = assessedBy || patient.assessedBy;
 
     // Save the updated patient to the database
     const updatedPatient = await patient.save();
@@ -221,6 +243,7 @@ router.put("/patients/:id", async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
+
 
 router.delete("/patients/:id", authMiddleware, async (req, res) => {
   try {

@@ -1,0 +1,34 @@
+<div className="treatment-plan-section">
+  <h2>Treatment Plan</h2>
+  <div className="horizontal-table">
+    <div className="patient-info">
+      <label>Investigation Advised:</label>
+      <p>{patient.treatmentPlan.investadvised}</p>
+    </div>
+    <div className="patient-info">
+      <label>Medication:</label>
+      <p>{patient.treatmentPlan.medication}</p>
+    </div>
+    <div className="patient-info">
+      <label>Special Needs:</label>
+      <p>{patient.treatmentPlan.specialNeeds}</p>
+    </div>
+  </div>
+</div>
+<div className="assessed-by-section">
+  <h2>Assessed By</h2>
+  <div className="horizontal-table">
+    <div className="patient-info">
+      <label>Doctor's Name:</label>
+      <p>{patient.assessedBy.doctorName}</p>
+    </div>
+    <div className="patient-info">
+      <label>Date:</label>
+      <p>{patient.assessedBy.date}</p>
+    </div>
+    <div className="patient-info">
+      <label>Time:</label>
+      <p>{patient.assessedBy.time}</p>
+    </div>
+  </div>
+</div>
