@@ -6,6 +6,7 @@ import {toast} from 'react-hot-toast'
 import axios from "axios";
 import { Table } from "antd";
 import moment from "moment";
+import FrontPage from "../../components/FrontPage";
 
 function DoctorsList() {
   const [doctors, setDoctors] = useState([]);
@@ -102,6 +103,7 @@ function DoctorsList() {
   ];
   return (
     <Layout>
+      {/* <FrontPage /> */}
       <h1 className="page-header">Doctors List</h1>
       <hr />
       <Table columns={columns} dataSource={doctors} />

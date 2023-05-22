@@ -21,6 +21,11 @@ import View from "./pages/Admin/View";
 import AddBed from "./pages/Admin/AddBed";
 import Update from "./pages/Admin/Update";
 import Inven from "./pages/Admin/Inven";
+import Sidebar from "./pages/Admin/Sidebar";
+import Topbar from "./components/Topbar";
+import FrontPage from "./components/FrontPage";
+import InvenList from "./pages/Admin/invenlist";
+import Contact from "./components/contact";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -42,6 +47,24 @@ function App() {
         />
 
         <Route
+          path="/top"
+          element={
+            <PublicRoute>
+              <FrontPage />
+            </PublicRoute>
+          }
+        />
+
+        <Route
+          path="/con"
+          element={
+            <PublicRoute>
+              <Contact />
+            </PublicRoute>
+          }
+        />
+
+        <Route
           path="/register"
           element={
             <PublicRoute>
@@ -49,6 +72,7 @@ function App() {
             </PublicRoute>
           }
         />
+        
         <Route
           path="/"
           element={
@@ -87,6 +111,14 @@ function App() {
           element={
             <ProtectedRoute>
               <DoctorsList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/invenlist"
+          element={
+            <ProtectedRoute>
+              <InvenList />
             </ProtectedRoute>
           }
         />
@@ -166,6 +198,14 @@ function App() {
             </ProtectedRoute>
           }
         />
+         {/* <Route
+          path="/sidebar"
+          element={
+            <ProtectedRoute>
+              <Sidebar />
+            </ProtectedRoute>
+          }
+        /> */}
 
 <Route
           path="/inven"

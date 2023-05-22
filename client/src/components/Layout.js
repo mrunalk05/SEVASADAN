@@ -68,6 +68,11 @@ function Layout({ children }) {
       icon: "ri-search-line",
     },
     {
+      name: "Sidebar",
+      path: "/top",
+      icon: "ri-search-line",
+    },
+    {
       name: "Register Patient",
       path: "/register-patient",
       icon: "ri-user-add-line",
@@ -88,32 +93,15 @@ function Layout({ children }) {
       icon: "ri-file-chart-line",
     },
     {
-      name: "Laboratory",
-      path: "/laboratory",
-      icon: "ri-flask-line",
-    },
-
-    {
       name: "Inventory",
       path: "/inven",
       icon: "ri-archive-line",
     },
     {
-      name: "Accounting",
-      path: "/accounting",
-      icon: "ri-bank-line",
-    },
-
-    {
-      name: "Maternity",
-      path: "/maternity",
-      icon: "ri-women-line",
-    },
-    {
-      name: "Helpdesk",
-      path: "/helpdesk",
-      icon: "ri-questionnaire-line",
-    },
+      name: "InventoryList",
+      path: "/admin/invenlist",
+      icon: "ri-archive-line",
+    }
   ];
 
   const menuToBeRendered = user?.isAdmin

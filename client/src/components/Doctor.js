@@ -1,9 +1,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import Sidebar from "./Sidebar";
 
 function Doctor({ doctor }) {
   const navigate = useNavigate();
   return (
+    <>
+    <Sidebar />
     <div
       className="card p-2 cursor-pointer"
       onClick={() => navigate(`/book-appointment/${doctor._id}`)}
@@ -29,6 +32,7 @@ function Doctor({ doctor }) {
         {doctor.timings[0]} - {doctor.timings[1]}
       </p>
     </div>
+    </>
   );
 }
 

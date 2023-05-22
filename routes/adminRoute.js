@@ -26,6 +26,25 @@ router.get("/get-all-doctors", authMiddleware, async (req, res) => {
   }
 });
 
+router.get("/inven",  async(req, res) => {
+  try {
+    const users = await medd.find({});
+    res.status(200).send({
+      message: "Users fetched successfully",
+      success: true,
+      data: users,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Inven error",
+      success: false,
+      error,
+    });
+  }
+});
+
+
 router.get("/get-all-users", authMiddleware, async (req, res) => {
   try {
     const users = await User.find({});

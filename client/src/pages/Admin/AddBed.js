@@ -29,23 +29,22 @@ function AddBed() {
         }
 
         try {
-            await axios.post("/api/admin/add-bed", bed);
-            // const response = await fetch("http://localhost:5000/api/admin/add-bed", {
-            //     method: "POST",
-                // headers: {
-                //     "Content-Type": "application/json",
-                //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-                // },
-            //     body: JSON.stringify(bed),
-            // });
-                // return await axios.post(`${URL}/add`, user);
-                
-    
-            // if (!response.ok) {
-            //     throw new Error("Network response was not ok");
-            // }
+            await axios.post("", bed);
+         
+            const response = axios.post('/api/admin/add-bed', bed, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error("Network response was not ok");
+            }
+
             setIsSubmitted(true);
             navigate.push('/');
+
         }
         catch (error) {
             console.log(error);

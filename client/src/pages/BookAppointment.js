@@ -8,6 +8,7 @@ import axios from "axios";
 import { Navigate, useNavigate, useParams } from "react-router-dom";
 import DoctorForm from "../components/DoctorForm";
 import moment from "moment";
+import Sidebar from "../components/Sidebar";
 
 function BookAppointment() {
   const [isAvailable, setIsAvailable] = useState(false);
@@ -108,6 +109,7 @@ function BookAppointment() {
     getDoctorData();
   }, []);
   return (
+    <Sidebar>
     <Layout>
       {doctor && (
         <div>
@@ -182,6 +184,7 @@ function BookAppointment() {
         </div>
       )}
     </Layout>
+    </Sidebar>
   );
 }
 
