@@ -1,0 +1,5 @@
+{
+    name: "Apply Doctor",
+    path: "/apply-doctor",
+    icon: "ri-hospital-line",
+  },

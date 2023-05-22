@@ -184,6 +184,7 @@ router.get("/get-all-approved-doctors", authMiddleware, async (req, res) => {
 
 router.post("/book-appointment", authMiddleware, async (req, res) => {
   try {
+ 
     req.body.status = "pending";
     req.body.date = moment(req.body.date, "DD-MM-YYYY").toISOString();
     req.body.time = moment(req.body.time, "HH:mm").toISOString();

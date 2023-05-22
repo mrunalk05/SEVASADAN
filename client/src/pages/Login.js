@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { hideLoading, showLoading } from "../redux/alertsSlice";
 
+
 function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,21 +34,22 @@ function Login() {
         <h1 className="card-title">Welcome Back</h1>
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item label="Email" name="email">
-            <Input placeholder="Email" />
+            <Input placeholder="Email" type="email" className="input-field" />
           </Form.Item>
           <Form.Item label="Password" name="password">
-            <Input placeholder="Password" type="password" />
+            <Input placeholder="Password" type="password" className="input-field" />
           </Form.Item>
 
-          
-          <Button className="primary-button my-2 full-width-button" htmlType="submit">
+          <Button
+            className="primary-button my-2 full-width-button"
+            htmlType="submit"
+          >
             LOGIN
           </Button>
 
           <Link to="/register" className="anchor mt-2">
             CLICK HERE TO REGISTER
           </Link>
-         
         </Form>
       </div>
     </div>
@@ -55,3 +57,4 @@ function Login() {
 }
 
 export default Login;
+ 

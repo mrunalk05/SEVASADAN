@@ -17,14 +17,18 @@ label {
 
 input[type="text"],
 input[type="number"],
+input[type="date"],
+input[type="time"],
 select,
 textarea {
   margin-top: 0.5rem;
-  padding: 1rem;
-  border: 1px solid #ccc;
+  padding: 1.2rem;
+  border: 2px solid #2678a9; /* Dark blue border */
   border-radius: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   width: 100%;
+  background-color: #f0f5f9; /* Light blue background */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
 }
 
 select {
@@ -38,12 +42,12 @@ select {
 }
 
 textarea {
-  height: 8rem;
+  height: 10rem;
 }
 
 button[type="submit"] {
   margin-top: 2rem;
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.4rem;
   background-color: #1c75bc;
   color: #fff;
   border: none;
@@ -60,5 +64,5 @@ button[type="submit"]:hover {
 div.error-message {
   color: #ff3b3b;
   margin-bottom: 1rem;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }

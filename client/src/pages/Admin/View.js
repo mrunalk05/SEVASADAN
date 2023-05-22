@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { showLoading, hideLoading } from "../../redux/alertsSlice";
 import { useDispatch } from "react-redux";
 import "./view.css";
+
 function View() {
   const [patient, setPatient] = useState({});
   const dispatch = useDispatch();
@@ -67,7 +68,7 @@ function View() {
             <p>{patient.address}</p>
           </div>
           <div className="patient-info">
-            <label>gender:</label>
+            <label>Gender:</label>
             <p>{patient.gender}</p>
           </div>
           <div className="patient-info">
@@ -100,9 +101,9 @@ function View() {
           </div>
 
           <div className="patient-info">
-            <h2>Treatment Plan</h2>
+            <label>Treatment Plan</label>
             {patient.treatmentPlan ? (
-              <table>
+              <table className="table">
                 <tbody>
                   <tr>
                     <th>Investigation Advised</th>
@@ -123,10 +124,10 @@ function View() {
             )}
           </div>
 
-          <div className="assessed-by-section">
-            <h2>Assessed By</h2>
+          <div className="patient-info">
+            <label>Assessed By</label>
             {patient.assessedBy ? (
-              <table>
+              <table className="table">
                 <tbody>
                   <tr>
                     <th>Doctor's Name</th>
@@ -147,10 +148,10 @@ function View() {
             )}
           </div>
 
-          <div className="systematic-exam-section">
-            <h2>Systematic Examination</h2>
+          <div className="patient-info">
+            <label>Systematic Examination</label>
             {patient.systematicexam ? (
-              <table>
+              <table className="table">
                 <tbody>
                   <tr>
                     <th>CVS</th>
@@ -175,10 +176,10 @@ function View() {
             )}
           </div>
 
-          <div className="vitals-section">
-            <h2>Vitals</h2>
+          <div className="patient-info">
+            <label>Vitals</label>
             {patient.vitals ? (
-              <table>
+              <table className="table">
                 <tbody>
                   <tr>
                     <th>Pulse</th>

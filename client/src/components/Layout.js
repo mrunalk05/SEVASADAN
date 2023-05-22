@@ -74,41 +74,24 @@ function Layout({ children }) {
     },
 
     {
-      name: "Billing",
-      path: "/billing",
+      name: "Beds",
+      path: "/beds",
       icon: "ri-money-dollar-circle-line",
     },
     {
-      name: "Reports",
-      path: "/reports",
-      icon: "ri-file-chart-line",
+      name: "Addbed",
+      path: "/add-bed",
+      icon: "ri-money-dollar-circle-line",
     },
     {
-      name: "Laboratory",
-      path: "/laboratory",
-      icon: "ri-flask-line",
-    },
-
-    {
-      name: "Inventory",
-      path: "/inventory",
-      icon: "ri-archive-line",
+      name: "Add Inventory stock",
+      path: "/inven",
+      icon: "ri-money-dollar-circle-line",
     },
     {
-      name: "Accounting",
-      path: "/accounting",
-      icon: "ri-bank-line",
-    },
-
-    {
-      name: "Maternity",
-      path: "/maternity",
-      icon: "ri-women-line",
-    },
-    {
-      name: "Helpdesk",
-      path: "/helpdesk",
-      icon: "ri-questionnaire-line",
+      name: "Inventory List",
+      path: "/invenlist",
+      icon: "ri-money-dollar-circle-line",
     },
   ];
 

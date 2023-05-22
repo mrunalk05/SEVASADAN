@@ -32,22 +32,25 @@ function Register() {
         <h1 className="card-title">Nice To Meet U</h1>
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item label="Name" name="name">
-            <Input placeholder="Name" />
+            <Input placeholder="Name" name="name" />
           </Form.Item>
           <Form.Item label="Email" name="email">
-            <Input placeholder="Email" />
+            <Input 
+            placeholder="Email" 
+            name="email" />
           </Form.Item>
           <Form.Item label="Password" name="password">
-            <Input placeholder="Password" type="password" />
+            <Input
+              placeholder="Password"
+              type="password"
+            />
           </Form.Item>
-
           <Button
             className="primary-button my-2 full-width-button"
             htmlType="submit"
           >
             REGISTER
           </Button>
-
           <Link to="/login" className="anchor mt-2">
             CLICK HERE TO LOGIN
           </Link>

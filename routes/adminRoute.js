@@ -3,6 +3,7 @@ const router = express.Router();
 const User = require("../models/userModel");
 const Doctor = require("../models/doctorModel");
 const Patient = require("../models/PatientModel");
+const medd = require("../models/inventschema")
 const authMiddleware = require("../middlewares/authMiddleware");
 const mongoose = require("mongoose");
 
@@ -260,4 +261,97 @@ router.delete("/patients/:id", authMiddleware, async (req, res) => {
     return res.status(500).json({ success: false, message: "Server error" });
   }
 });
+
+/*beds and inventory */
+
+
+router.get("/bedlist",  async(req, res) => {
+  try {
+    const users = await medd.find({});
+    res.status(200).send({
+      message: "Users fetched successfully",
+      success: true,
+      data: users,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Bedlist error",
+      success: false,
+      error,
+    });
+  }
+});
+
+router.post('/add-bed', async(req, res)=>{
+  try{
+    const rest= req.body;
+console.log(rest);
+    const bedd= new bedmodel({
+      roomno: req.body.roomno,
+      bedno: req.body.bedno,
+      patient: req.body.patient
+    });
+
+    const result= await bedd.save();
+    res.status(201).json({
+      message: 'Bed Added successfully',
+      success: true,
+      data: result,
+    });
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({
+      message: 'Error while adding bed',
+      success: false,
+      error,
+    });
+  }
+});
+
+router.post('/inven', authMiddleware ,async(req, res)=>{
+  try{
+    const medico= new medd({
+      medname: req.body.medname,
+      medcompany: req.body.medcompany,
+      quantity: req.body.quantity,
+      disease: req.body.disease
+    });
+
+    const result= await medico.save();
+    res.status(201).json({
+      message: 'Inven Added successfully',
+      success: true,
+      data: result,
+    });
+  }
+  catch(error){
+    console.log(error);
+    res.status(500).json({
+      message: 'Error while adding bed',
+      success: false,
+      error,
+  });
+
+}})
+
+router.get("/invenlist",  async(req, res) => {
+  try {
+    const users = await medd.find({});
+    res.status(200).send({
+      message: "Users fetched successfully",
+      success: true,
+      data: users,
+    });
+  } catch (error) {
+    console.log(error);
+    res.status(500).send({
+      message: "Inven error",
+      success: false,
+      error,
+    });
+  }
+});
+ 
 module.exports = router;

@@ -3,7 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
  
-
+import './update.css'
 function Update() {
   const { id } = useParams();
   const [formData, setFormData] = useState({});

@@ -110,7 +110,7 @@ function Patient() {
       !patientData.level_of_consciousness
     ) {
       let errorMessage = "Please fill in all the required fields:";
-      if (!patientData.name) errorMessage += " Name";
+      if (!patientData.name) errorMessage += "Name";
       if (!patientData.age) errorMessage += " Age";
       if (!patientData.gender) errorMessage += " Gender";
       if (!patientData.address) errorMessage += " Address";
@@ -178,6 +178,7 @@ function Patient() {
   return (
     <form onSubmit={handleSubmit}>
       {errorMessage && <div style={{ color: "red" }}>{errorMessage}</div>}
+
       <label>
         Name:
         <input
@@ -232,7 +233,7 @@ function Patient() {
       <label>
         Phone:
         <input
-          type="text"
+          type="number"
           name="phone"
           value={patientData.phone}
           onChange={handleInputChange}

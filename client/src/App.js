@@ -19,6 +19,10 @@ import Patient from "./pages/Admin/Patient";
 import Patientlist from "./pages/Admin/Patientlist";
 import View from "./pages/Admin/View";
 import Update from "./pages/Admin/Update";
+import AddBed from "./components/Addbed";
+import BedList from "./components/Bed";
+import Inven from "./components/Inven";
+import InvenList from "./components/Invenlist";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -88,19 +92,19 @@ function App() {
             </ProtectedRoute>
           }
         />
-          <Route
+        <Route
           path="/view/:id"
           element={
             <ProtectedRoute>
-              <View/>
+              <View />
             </ProtectedRoute>
           }
         />
-            <Route
+        <Route
           path="/update/:id"
           element={
             <ProtectedRoute>
-              <Update/>
+              <Update />
             </ProtectedRoute>
           }
         />
@@ -137,7 +141,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-      
+
         <Route
           path="/doctor/appointments"
           element={
@@ -152,6 +156,39 @@ function App() {
           element={
             <ProtectedRoute>
               <Patient />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/add-bed"
+          element={
+            <ProtectedRoute>
+              <AddBed />
+            </ProtectedRoute>
+          }
+        />
+           <Route
+          path="/beds"
+          element={
+            <ProtectedRoute>
+              <BedList/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/inven"
+          element={
+            <ProtectedRoute>
+              <Inven/>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/invenlist"
+          element={
+            <ProtectedRoute>
+              <InvenList/>
             </ProtectedRoute>
           }
         />

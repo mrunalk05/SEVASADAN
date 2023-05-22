@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Dr. Ravi Gupta",
+    "specialization": "Neurology",
+    "fee": "₹1,500",
+    "address": "789 Park Avenue, New Delhi",
+    "website": "https://www.drravigupta.com"
+  },
+  {
+    "id": 2,
+    "name": "Dr. Priya Sharma",
+    "specialization": "Pediatrics",
+    "fee": "₹800",
+    "address": "246 Green Street, Mumbai",
+    "website": "https://www.drpriyasharma.com"
+  },
+  {
+    "id": 3,
+    "name": "Dr. Sanjay Patel",
+    "specialization": "Orthopedics",
+    "fee": "₹2,000",
+    "address": "543 Blue Lane, Bangalore",
+    "website": "https://www.drsanjaypatel.com"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Aishwarya Reddy",
+    "specialization": "Gynecology",
+    "fee": "₹1,200",
+    "address": "987 Redwood Avenue, Hyderabad",
+    "website": "https://www.draishwaryareddy.com"
+  },
+  {
+    "id": 5,
+    "name": "Dr. Arjun Verma",
+    "specialization": "Psychiatry",
+    "fee": "₹1,800",
+    "address": "321 Yellow Road, Kolkata",
+    "website": "https://www.drarjunverma.com"
+  }
+]

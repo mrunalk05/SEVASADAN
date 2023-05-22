@@ -145,7 +145,7 @@ function BookAppointment() {
                 <b>Website : </b>
                 {doctor.website}
               </p>
-              <div className="d-flex flex-column pt-2 mt-2">
+              <div className="d-flex flex-column pt-2 mt-2"> 
                 <DatePicker
                   format="DD-MM-YYYY"
                   onChange={(value) => {
@@ -186,3 +186,4 @@ function BookAppointment() {
 }
 
 export default BookAppointment;
+ 
