@@ -20,9 +20,10 @@ import Patientlist from "./pages/Admin/Patientlist";
 import View from "./pages/Admin/View";
 import Update from "./pages/Admin/Update";
 import AddBed from "./components/Addbed";
-import BedList from "./components/Bed";
-import Inven from "./components/Inven";
-import InvenList from "./components/Invenlist";
+import AllBed from "./components/Bed";
+import ListMedicine from "./components/ListMedicine";
+import EditMedicine from "./components/EditMedicine";
+import AddMedicine from "./components/AddMedicine";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -161,34 +162,42 @@ function App() {
         />
 
         <Route
-          path="/add-bed"
+          path="/addbed"
           element={
             <ProtectedRoute>
               <AddBed />
             </ProtectedRoute>
           }
         />
-           <Route
-          path="/beds"
+        <Route
+          path="/getbed"
           element={
             <ProtectedRoute>
-              <BedList/>
+              <AllBed />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/inven"
+          path="/addinven"
           element={
             <ProtectedRoute>
-              <Inven/>
+              <AddMedicine />
             </ProtectedRoute>
           }
         />
         <Route
-          path="/invenlist"
+          path="/getinven"
           element={
             <ProtectedRoute>
-              <InvenList/>
+              <ListMedicine />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/:id"
+          element={
+            <ProtectedRoute>
+              <EditMedicine />
             </ProtectedRoute>
           }
         />

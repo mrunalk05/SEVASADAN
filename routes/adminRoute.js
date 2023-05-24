@@ -3,7 +3,8 @@ const router = express.Router();
 const User = require("../models/userModel");
 const Doctor = require("../models/doctorModel");
 const Patient = require("../models/PatientModel");
-const medd = require("../models/inventschema")
+const patternn = require("../models/InventoryModel");
+const bedmodel = require("../models/BedModel");
 const authMiddleware = require("../middlewares/authMiddleware");
 const mongoose = require("mongoose");
 
@@ -206,7 +207,7 @@ router.put("/patients/:id", async (req, res) => {
     systematicexam,
     local_examination,
     treatmentPlan,
-    assessedBy
+    assessedBy,
   } = req.body;
 
   try {
@@ -227,8 +228,10 @@ router.put("/patients/:id", async (req, res) => {
     patient.complaints = complaints || patient.complaints;
     patient.history = history || patient.history;
     patient.allergies = allergies || patient.allergies;
-    patient.general_examination = general_examination || patient.general_examination;
-    patient.level_of_consciousness = level_of_consciousness || patient.level_of_consciousness;
+    patient.general_examination =
+      general_examination || patient.general_examination;
+    patient.level_of_consciousness =
+      level_of_consciousness || patient.level_of_consciousness;
     patient.vitals = vitals || patient.vitals;
     patient.systematicexam = systematicexam || patient.systematicexam;
     patient.local_examination = local_examination || patient.local_examination;
@@ -244,7 +247,6 @@ router.put("/patients/:id", async (req, res) => {
     res.status(500).json({ message: "Server Error" });
   }
 });
-
 
 router.delete("/patients/:id", authMiddleware, async (req, res) => {
   try {
@@ -263,95 +265,75 @@ router.delete("/patients/:id", authMiddleware, async (req, res) => {
 });
 
 /*beds and inventory */
-
-
-router.get("/bedlist",  async(req, res) => {
+router.post("/addbed", async (req, res) => {
   try {
-    const users = await medd.find({});
-    res.status(200).send({
-      message: "Users fetched successfully",
-      success: true,
-      data: users,
-    });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      message: "Bedlist error",
-      success: false,
-      error,
-    });
-  }
-});
-
-router.post('/add-bed', async(req, res)=>{
-  try{
-    const rest= req.body;
-console.log(rest);
-    const bedd= new bedmodel({
+    const newbed = new bedmodel({
       roomno: req.body.roomno,
-      bedno: req.body.bedno,
-      patient: req.body.patient
+      bedno: req.body.patient,
+      patient: req.body.bedno,
     });
-
-    const result= await bedd.save();
-    res.status(201).json({
-      message: 'Bed Added successfully',
-      success: true,
-      data: result,
-    });
-  }
-  catch(error){
-    console.log(error);
-    res.status(500).json({
-      message: 'Error while adding bed',
-      success: false,
-      error,
-    });
-  }
-});
-
-router.post('/inven', authMiddleware ,async(req, res)=>{
-  try{
-    const medico= new medd({
-      medname: req.body.medname,
-      medcompany: req.body.medcompany,
-      quantity: req.body.quantity,
-      disease: req.body.disease
-    });
-
-    const result= await medico.save();
-    res.status(201).json({
-      message: 'Inven Added successfully',
-      success: true,
-      data: result,
-    });
-  }
-  catch(error){
-    console.log(error);
-    res.status(500).json({
-      message: 'Error while adding bed',
-      success: false,
-      error,
-  });
-
-}})
-
-router.get("/invenlist",  async(req, res) => {
-  try {
-    const users = await medd.find({});
-    res.status(200).send({
-      message: "Users fetched successfully",
-      success: true,
-      data: users,
-    });
+    const result = await newbed.save();
+    res.json(newbed);
   } catch (error) {
-    console.log(error);
-    res.status(500).send({
-      message: "Inven error",
-      success: false,
-      error,
-    });
+    res.json({ message: error.message });
   }
 });
- 
+
+router.post("/addinven", async (req, res) => {
+  const boody = req.body;
+  try {
+    const newuser = new patternn(boody);
+    await newuser.save();
+    res.json(newuser);
+  } catch (error) {
+    console.log("Error occured", error);
+  }
+});
+router.get("/getinven", async (req, res) => {
+  try {
+    const all = await patternn.find({});
+    res.status(200).json(all);
+    // console.log(all);
+  } catch (error) {
+    console.log("Error Occured", error);
+  }
+});
+router.get("/getbed", async (req, res) => {
+  try {
+    const all = await bedmodel.find({});
+    res.status(200).json(all);
+    // console.log(all);
+  } catch (error) {
+    console.log("Error Occured", error);
+  }
+});
+router.put("/:id", async (request, response) => {
+  let user = request.body;
+
+  const editUser = new patternn(user);
+  try {
+    await patternn.updateOne({ _id: request.params.id }, editUser);
+    response.status(201).json(editUser);
+  } catch (error) {
+    response.status(409).json({ message: error.message });
+  }
+});
+
+router.delete("/:id", async (request, response) => {
+  try {
+    await patternn.deleteOne({ _id: request.params.id });
+    response.status(201).json("User deleted Successfully");
+  } catch (error) {
+    response.status(409).json({ message: error.message });
+  }
+});
+
+router.get("/:id", async (request, response) => {
+  try {
+    const user = await patternn.findById(request.params.id);
+    response.status(200).json(user);
+  } catch (error) {
+    response.status(404).json({ message: error.message });
+  }
+});
 module.exports = router;

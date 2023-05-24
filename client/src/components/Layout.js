@@ -75,22 +75,22 @@ function Layout({ children }) {
 
     {
       name: "Beds",
-      path: "/beds",
+      path: "/getbed",
       icon: "ri-money-dollar-circle-line",
     },
     {
       name: "Addbed",
-      path: "/add-bed",
+      path: "/addbed",
       icon: "ri-money-dollar-circle-line",
     },
     {
       name: "Add Inventory stock",
-      path: "/inven",
+      path: "/addinven",
       icon: "ri-money-dollar-circle-line",
     },
     {
       name: "Inventory List",
-      path: "/invenlist",
+      path: "/getinven",
       icon: "ri-money-dollar-circle-line",
     },
   ];
