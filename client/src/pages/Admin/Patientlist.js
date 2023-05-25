@@ -55,14 +55,13 @@ const PatientList = () => {
 
   return (
     <div>
-     <h1></h1>
-      <div class="input-container">
+      <h1></h1>
+      <div className="input-container">
         <input
           type="text"
           placeholder="Search patients..."
           value={searchQuery}
           onChange={(event) => setSearchQuery(event.target.value)}
-          
         />
         <button>SEARCH</button>
       </div>
@@ -94,6 +93,11 @@ const PatientList = () => {
                   >
                     DELETE
                   </button>
+                  <Link
+                    to={`/bill?objectId=${patient._id}&name=${patient.name}`}
+                  >
+                    <button className="btn btn-billing">Billing</button>
+                  </Link>
                 </td>
               </tr>
             ))}

@@ -7,7 +7,7 @@ const patternn = require("../models/InventoryModel");
 const bedmodel = require("../models/BedModel");
 const authMiddleware = require("../middlewares/authMiddleware");
 const mongoose = require("mongoose");
-
+const Billing = require("../client/src/BillingModel");
 router.get("/get-all-doctors", authMiddleware, async (req, res) => {
   try {
     const doctors = await Doctor.find({});
@@ -336,4 +336,24 @@ router.get("/:id", async (request, response) => {
     response.status(404).json({ message: error.message });
   }
 });
+
+router.post('/billing', async (req, res) => {
+  try {
+    const { expenses, grossTotal, objectId, name } = req.body;
+
+    const newBilling = new Billing({
+      expenses: expenses.map(expense => ({ expenseType: expense.expenseType, amount: expense.amount })),
+      grossTotal,
+      objectId,
+      name,
+    });
+
+    const result = await newBilling.save();
+    res.json(result);
+  } catch (error) {
+    res.json({ message: error.message });
+  }
+});
+
+
 module.exports = router;

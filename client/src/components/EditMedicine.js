@@ -1,6 +1,7 @@
-import react, { useState, useParams } from 'react';
+import react, { useState} from 'react';
 import { FormGroup, FormControl, InputLabel, Input, Button, styled, Typography } from '@mui/material';
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from 'react-router-dom';
+
 import axios from 'axios';
 
 const initialValue = {

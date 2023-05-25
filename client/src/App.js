@@ -24,6 +24,8 @@ import AllBed from "./components/Bed";
 import ListMedicine from "./components/ListMedicine";
 import EditMedicine from "./components/EditMedicine";
 import AddMedicine from "./components/AddMedicine";
+import Landing from "./pages/Landing";
+import BillingModule from "./components/BillingModule";
 function App() {
   const { loading } = useSelector((state) => state.alerts);
   return (
@@ -36,6 +38,14 @@ function App() {
       <Toaster position="top-center" reverseOrder={false} />
       <Routes>
         <Route
+          path="/landing"
+          element={
+            <PublicRoute>
+              <Landing />
+            </PublicRoute>
+          }
+        />
+        <Route
           path="/login"
           element={
             <PublicRoute>
@@ -43,7 +53,14 @@ function App() {
             </PublicRoute>
           }
         />
-
+        <Route
+          path="/bill"
+          element={
+            <ProtectedRoute>
+              <BillingModule/>
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/register"
           element={
@@ -60,6 +77,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/apply-doctor"
           element={

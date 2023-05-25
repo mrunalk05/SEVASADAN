@@ -93,6 +93,11 @@ function Layout({ children }) {
       path: "/getinven",
       icon: "ri-money-dollar-circle-line",
     },
+    {
+      name: "billing",
+      path: "/bill",
+      icon: "ri-money-dollar-circle-line",
+    },
   ];
 
   const menuToBeRendered = user?.isAdmin
